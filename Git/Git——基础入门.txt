@@ -8,3 +8,87 @@
     git config --global alias.logl 'log --oneline'
 
     cat ~/.gitconfig 查看是否修改别名成功
+
+2.查看状态  git st（即git status）
+    在git的任何阶段都可以使用该命令来查看：
+    哪些文件在工作区
+    哪些文件在暂存区
+
+3.查看提交日志  git logl（即git log --oneline）
+    打印出最近的提交信息，每条信息只占一行，页面更干净美观
+
+4.提交修改  git ci（即git commit）
+    git add .
+    git ci -m ""
+    确保代码提交到本地仓库，代码基本就不会丢失了
+
+5.push前合并本地多个commit信息，保持远端干净整洁
+    git rebase -i HEAD~3
+    将除了第一行的下面两个pick改成s
+    重新写commit message
+
+6.挑选单个修改合并代码 git cherry-pick
+    git logl 查看分支提交的hash值
+    git cherry-pick hash值 
+
+7.工作场景一：新任务（开发新特性/修bug）
+    
+    git st 
+        若有未保存修改，则先git add . 和git ci -m ""
+    
+    切换到开发主分支
+        git co dev
+        若本地没显示出该分支，则git fetch获取信息
+        若没有该分支，则git co -b dev
+
+    开始写代码
+        coding
+
+    更新最新代码
+        git pull origin dev
+
+    若代码量比较多，开发时间长，经常地add和ci是一个好习惯
+    ci时提交的commit message很重要，要认真写
+
+    代码开发结束，整理多个commit message
+        git logl 查看commit信息
+        git cherry-pick hash值
+        git st  查看仓库状态
+
+    提交代码到远程
+        git push origin dev
+    
+8.工作场景二：开发进行一半，需要远程主分支的最新代码
+    git st
+        git add .  git ci -m ""
+    
+    git pull --rebase origin dev
+        rebase比较整洁，并且避免了merge之后的又一次commit
+    git logl
+
+9.工作场景三：挑选实验分支代码的某个修改
+    git cheery-pick 
+
+10.使用git的一些原则
+    永远记得git st和git logl来确认当前分支的状态
+    宁愿临时制造一些无用的commit来保证代码不会丢失，也不要轻信自己的记忆力
+    谨慎（最好避免）使用git stash，极易造成代码丢失
+    认真对待、编写每次的commit message
+    必要的时候可以创建一些临时分支写实验性代码，而不是依赖git reset撤销commit——大多数人在git reset的时候容易犯错
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

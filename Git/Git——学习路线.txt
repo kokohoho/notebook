@@ -1,0 +1,9 @@
+Git不属于大数据内容，在工作闲暇时间进行学习
+一、文字教程：
+    1.廖雪峰Git教程
+        百度Git
+    2.Pro Git中文版
+        百度Pro Git
+
+二、视频教程：
+    zhihu.com/question/21669554/answer/1186773969
