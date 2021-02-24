@@ -1,0 +1,70 @@
+tips:
+1.什么是Git
+    Git是一个分布式版本控制系统，由Linux创始人Linus开发（至于为什么叫Git，估计是在骂BitKeeper）
+
+2.Git诞生
+    肯定是之前版本控制不好用才开发得
+
+3.集中式vs分布式
+    集中式：中央仓库，工作依赖于中央仓库
+    分布式：没有中央仓库，每个电脑都是一个版本库，但一般会选一台作为准中央仓库，临时中央仓库挂了其它电脑也可以代码提交和push
+
+4.Git安装
+    Linux
+    Windows
+    MacOS
+
+5.创建版本库
+    Repository  版本库（仓库）是用于管理项目的单元，在该单元内对文件的操作可以被追踪
+    创建版本库相当于创建一个目录，并用git命令在该目录下生成维护版本库的文件.git
+        创建目录    mkdir test
+        进入目录    cd  test
+        初始化仓库   git init
+    在版本库中创建和修改文件
+        创建/修改文件    touch/vim helloworld.txt
+        添加文件到git    git add helloworld.txt
+                       git add .    添加该目录下所有未添加文件
+        提交            git commit -m "hello world"
+
+6.时光穿梭机
+    git status  掌握工作区状态
+    git diff    查看文件修改内容
+
+    6.1 版本回退
+        查看要回退的历史版本
+            git log 查看版本提交历史
+            git log --oneline       简洁页面查看提交历史
+            git log --pretty=oneline
+
+        历史版本标识
+            当前版本  HEAD
+            上个版本  HEAD^
+            上上版本  HEAD^^
+            ...
+            若干版本  HEAD~n
+
+
+        回退到某个版本
+            git reset --hard HEAD^
+
+        后悔药，要回到现代
+            HEAD只是一个指向对应提交版本的指针，即便回退了，最新的提交也不会丢失
+            命令行窗口没关的话就拉到上面找现代commit的哈希值
+            若窗口已经被关闭，则查看自己操作的历史命令
+                git reflog
+
+    6.2 工作区和暂存区
+    6.3 管理修改
+    6.4 撤销修改
+    6.5 删除文件
+
+
+
+
+
+
+
+
+
+
+
