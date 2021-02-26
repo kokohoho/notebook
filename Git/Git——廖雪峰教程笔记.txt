@@ -54,11 +54,49 @@ tips:
                 git reflog
 
     6.2 工作区和暂存区
+        工作区：修改代码，文件所在区
+        版本库：即.git目录
+            暂存区：git add之后或者暂存修改的区域
+            分支：git commit之后保存的分支，创建版本库默认创建master分支
+            HEAD：每个分支指向commit的指针
+
     6.3 管理修改
+        git add 将工作区中某个文件的修改提交到暂存区
+                提交的实际上是修改，即是将新文件加入git进行管理，也是将对老文件的修改加入暂存区
     6.4 撤销修改
+        撤销工作区修改
+            git checkout -- file
+            git checkout -- .
+        撤销暂存区修改
+            git reset 最新版本（git reset不仅会回退到某个版本，也会撤销暂存区的修改）
+            git checkout -- file
+        撤销本地提交的修改
+            git reset 需要的版本
+
     6.5 删除文件
+        rm  删除工作区文件
 
+        git rm      删除版本库暂存区文件
+        git commit  将删除修改更新到本地提交
 
+        如果删错文件了想恢复怎么办？
+        工作区：可以使用git cehckout -- file恢复，这个命令其实是将版本库的文件同步到工作区（没有被添加到版本库的文件被删除将无法恢复）
+
+7.远程仓库
+    $ ssh-keygen -t rsa -C "youremail@example.com"
+    从.ssh目录中找到id_rsa和id_rsa.pub，将pub中的key拷贝到github上
+    7.1 添加远程库
+        github上创建远程库
+        关联远程库   git remote add origin git@github.com:michaelliao/learngit.git
+        第一次push到远程库     git push -u origin master -u代表自动关联
+        之后push到远程库      git push origin master
+
+        当第一次clone或者push时，会有一个警告，并且要输入yes确认，这个警告是询问是否将github的key加入到本地信任主机列表
+    7.2 从远程库克隆
+        git clone
+            有ssh和https的方式，ssh速度更快，但是公司不一定开放ssh权限
+
+8.分支管理
 
 
 
