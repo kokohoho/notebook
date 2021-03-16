@@ -1,0 +1,52 @@
+一	数仓概念
+
+1.为什么要分层
+	问题一：what is it?
+		美团分为五层，阿里四层（DWS包含DWT）
+		1.ODS(Operation Data Store)	原始数据层：	原始数据，用来备份
+		2.DWD(Data Warehouse Detail)	明细数据层：	挖掘单元，需要ETL
+		3.DWS(Data Warehouse Service)	服务数据层：	天数汇总，轻度统计
+		4.DWT(Data Warehouse Topic)	数据主题层：	主题汇总，中度统计
+		5.ADS(Application Data Store)	数据应用层：	统计报表，为各种报表提供数据
+
+	问题二：why use it?
+		1. 把复杂问题简单化：每一层做每一层的事情，方便定位问题；联想数据挖掘的步骤
+		2. 减少重复开发：不必重新从原始数据去清洗、去重、规约数据，直接使用业务所需的数据；联想数据挖掘步骤
+		3. 隔离原始数据：使真实数据与统计数据解耦开；联想数据挖掘步骤
+
+		--->  上面3点都没从本质需求来分析，还停留在Java程序员的思想
+		--->  为什么分层应该是Java思想加上数据挖掘的理论来探究为什么分层比较好
+
+2.数据集市和仓库的
+	数据集市 	Data Market
+		一种微型数据仓库，部门级别
+	数据仓库 	Data Warehouse
+		企业级，包含所有部门
+
+3.数仓命名规范
+
+	3.1 表命名
+		ODS	ods_表名
+			ods_用户行为
+			ods_业务_订单/登录注册/物流
+		DWD dwd_dim/fact_表名
+		DWS dws_表名
+		DWT dwt_表名
+		ADS ads_表名
+
+		临时表 		xxx_tmp
+		用户行为表	xxx_log
+
+	3.2 脚本命名
+		数据源_to_目标_db/log.sh
+		用户行为脚本以log后缀；业务数据脚本以db为后缀
+
+	3.3 表字段类型
+		数量类型 bigint
+		金额类型 decimal(16，2)，标识：16位有效数字，其中小数部分2位
+		字符串（名字，描述信息等）类型为string
+		主键外键类型为string
+		时间戳类型为bigint
+
+
+
