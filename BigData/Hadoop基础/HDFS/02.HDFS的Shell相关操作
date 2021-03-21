@@ -1,0 +1,16 @@
+开发重点
+
+hadoop fs
+hdfs dfs
+
+和Linux命令基本一样
+
+1.上传文件
+    hadoop fs -put              source  target
+    hadoop fs -moveFromLocal    source  target
+    hadopp fs -copyFromLocal    source  target
+    hadoop fs -appendToFile     source  target
+
+2.下载
+    hadoop fs -get          source  target
+    hadoop fs -copyToLocal  source  target
